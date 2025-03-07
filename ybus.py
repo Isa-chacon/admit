@@ -7,7 +7,6 @@ from io import BytesIO
 import random
 import string
 import base64
-pdf_path = "Manual de usuario.pdf"
 
 # Configuración de la página
 st.set_page_config(page_title="Cálculo de Matriz Ybus", layout="wide")
@@ -82,8 +81,6 @@ if 'pagina' not in st.session_state:
 
 if st.sidebar.button("Cálcular matriz"):
     st.session_state.pagina = "Cálcular matriz"
-if st.sidebar.button("Manual de usuario"):
-    st.session_state.pagina = "Manual de usuario"
 if st.sidebar.button("Creadores"):
     st.session_state.pagina = "Creadores"
 
@@ -171,12 +168,6 @@ def mostrar_pdf(pdf_path):
     
     pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="900"></iframe>'
     st.markdown(pdf_display, unsafe_allow_html=True)
-
-# Verifica si estás en la página "Manual de Usuario"
-if st.session_state.pagina == "Manual de usuario":
-    st.markdown("### 📖 Manual de Usuario")
-    mostrar_pdf("Manual de usuario.pdf")  # Asegúrate de que el archivo está en la misma carpeta
-
 
 elif st.session_state.pagina == "Creadores":
     st.markdown("<h1 class='title'>Autores</h1>", unsafe_allow_html=True)
